@@ -1,18 +1,10 @@
 package com.example.yumhub.yumhub.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.UUID;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 public class Cart {
 
     @Id
@@ -28,4 +20,35 @@ public class Cart {
 
     private int quantity;
 
+    public UUID getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(UUID cartId) {
+        this.cartId = cartId;
+    }
+
+    public Foods getFood() {
+        return food;
+    }
+
+    public void setFood(Foods food) {
+        this.food = food;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

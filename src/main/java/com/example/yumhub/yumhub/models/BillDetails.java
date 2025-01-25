@@ -1,18 +1,10 @@
 package com.example.yumhub.yumhub.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.UUID;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Setter
-@Getter
 public class BillDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -24,4 +16,27 @@ public class BillDetails {
 
     private int item_quantity;
 
+    public UUID getBillDetailsId() {
+        return billDetailsId;
+    }
+
+    public void setBillDetailsId(UUID billDetailsId) {
+        this.billDetailsId = billDetailsId;
+    }
+
+    public Foods getFood() {
+        return food;
+    }
+
+    public void setFood(Foods food) {
+        this.food = food;
+    }
+
+    public int getItem_quantity() {
+        return item_quantity;
+    }
+
+    public void setItem_quantity(int item_quantity) {
+        this.item_quantity = item_quantity;
+    }
 }

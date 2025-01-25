@@ -4,30 +4,88 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.UUID;
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 public class Foods {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID foodId;
-
-    private String food_name;
-    private String food_star;
-    private String food_vote;
+    private String foodCategory;
+    private String foodDescription;
+    private String foodImage;
+    private String foodName;
+    private String foodStatus;
+    private String foodType;
     private double price;
-    private int discount;
-    private String food_description;
-    private String food_status;
-    private String food_type;
-    private String food_category;
-    private String food_image;
+    private double discount;
+
+    // Getter methods
+    public String getFoodCategory() {
+        return foodCategory;
+    }
+
+    public String getFoodDescription() {
+        return foodDescription;
+    }
+
+    public String getFoodImage() {
+        return foodImage;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public String getFoodStatus() {
+        return foodStatus;
+    }
+
+    public String getFoodType() {
+        return foodType;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setFoodId(UUID foodId) {
+        this.foodId = foodId;
+    }
+
+    public void setFoodCategory(String foodCategory) {
+        this.foodCategory = foodCategory;
+    }
+
+    public void setFoodDescription(String foodDescription) {
+        this.foodDescription = foodDescription;
+    }
+
+    public void setFoodImage(String foodImage) {
+        this.foodImage = foodImage;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    public void setFoodStatus(String foodStatus) {
+        this.foodStatus = foodStatus;
+    }
+
+    public void setFoodType(String foodType) {
+        this.foodType = foodType;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
 }
