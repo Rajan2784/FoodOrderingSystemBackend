@@ -8,11 +8,11 @@ import java.util.UUID;
 @Entity
 public class BillStatus {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID) // Matches the INT primary key auto-increment behavior
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID billId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false) // Many BillStatus entities can belong to one User
-    @JoinColumn(name = "user_id", nullable = false) // Maps to the 'id' column in the User table
+    @JoinColumn(name = "user_id") // Maps to the 'id' column in the User table
     private User user;
 
     private String billPhone;

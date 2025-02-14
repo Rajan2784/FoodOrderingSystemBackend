@@ -1,4 +1,4 @@
-package com.example.yumhub.yumhub.services;
+package com.example.yumhub.yumhub.services.food;
 
 import com.example.yumhub.yumhub.DTO.FoodDTO;
 import com.example.yumhub.yumhub.models.Foods;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class FoodServiceImplementation implements FoodService{
+public class FoodServiceImplementation implements FoodService {
     @Autowired
     private FoodRepository foodRepository;
 
@@ -30,6 +30,6 @@ public class FoodServiceImplementation implements FoodService{
 
     @Override
     public List<Foods> getAllFoods() {
-        return List.of();
+        return foodRepository.findAll();
     }
 }

@@ -1,9 +1,8 @@
 package com.example.yumhub.yumhub.controller;
 
 import com.example.yumhub.yumhub.DTO.FoodDTO;
-import com.example.yumhub.yumhub.services.FoodService;
+import com.example.yumhub.yumhub.services.food.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,5 +17,10 @@ public class FoodController {
     public ResponseEntity<?> saveFoods(@RequestBody FoodDTO foodDTO){
         String response = foodService.addFoods(foodDTO);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getAllFoods(){
+        return ResponseEntity.ok(foodService.getAllFoods());
     }
 }

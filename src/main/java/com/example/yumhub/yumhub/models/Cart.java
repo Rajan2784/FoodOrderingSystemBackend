@@ -1,5 +1,6 @@
 package com.example.yumhub.yumhub.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -10,13 +11,14 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID cartId;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "food_id")
     private Foods food;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+//    @JsonIgnore
+    private User userId;
 
     private int quantity;
 
@@ -45,10 +47,10 @@ public class Cart {
     }
 
     public User getUser() {
-        return user;
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(User userId) {
+        this.userId = userId;
     }
 }

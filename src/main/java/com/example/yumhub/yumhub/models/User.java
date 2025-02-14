@@ -1,8 +1,9 @@
 package com.example.yumhub.yumhub.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -10,17 +11,23 @@ import java.util.UUID;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID userId;
 
     private String name;
     private String email;
     private String phone;
     private String password;
-    private Date dateOfBirth;
-    private String gender;
+    private LocalDate dateOfBirth;  // Using LocalDate for birthdate
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Enumerated(EnumType.STRING)
+    private Gender gender;  // Enum for gender
+
+    @Enumerated(EnumType.STRING)
+    private Role role;  // Enum for role
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Cart> carts;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -28,6 +35,14 @@ public class User {
 
     public List<BillStatus> getBillStatuses() {
         return billStatuses;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public void setBillStatuses(List<BillStatus> billStatuses) {
@@ -42,11 +57,11 @@ public class User {
         this.carts = carts;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -58,11 +73,11 @@ public class User {
         this.email = email;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

@@ -20,6 +20,10 @@ public class Foods {
     private double price;
     private double discount;
 
+    public UUID getFoodId() {
+        return foodId;
+    }
+
     // Getter methods
     public String getFoodCategory() {
         return foodCategory;
